@@ -1,6 +1,6 @@
 import React from 'react';
 
 let Sidebar = () =>
-  <nav>This is a sidebar</nav>
+  <nav className="sidebar">This is a sidebar</nav>
 
 export default Sidebar;

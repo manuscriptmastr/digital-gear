@@ -5,9 +5,9 @@ import Dashboard from './Dashboard';
 
 let App = ({ match }) =>
   <div className="App">
-    <Header className="header" />
-    <Sidebar className="sidebar" />
-    <Dashboard className="dashboard" />
+    <Header />
+    <Sidebar />
+    <Dashboard />
   </div>
 
 export default App;
