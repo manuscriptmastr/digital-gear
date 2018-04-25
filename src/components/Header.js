@@ -4,7 +4,7 @@ import Cart from './Cart';
 
 let Header = () =>
   <header>
-    <Avatar username="nybblr" />
+    <Avatar />
     <Cart />
   </header>
 

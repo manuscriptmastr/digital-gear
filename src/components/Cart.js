@@ -1,10 +1,14 @@
 import React from 'react';
 import Badge from './Badge';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-let Cart = () =>
-  <a className="header__cart">
+let Cart = ({ items }) =>
+  <Link to="/cart" className="cart">
     <img src="/assets/icon-cart.svg" alt="cart icon" />
-    <Badge num={3} />
-  </a>
+    <Badge num={items.length} />
+  </Link>
 
-export default Cart;
+let mapStateToProps = ({ items }) => ({ items });
+
+export default connect(mapStateToProps)(Cart);

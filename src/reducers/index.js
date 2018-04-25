@@ -1,3 +1,4 @@
+import initState from './initState';
 import { createUser, removeUser } from './../actions/users';
 import { addItem, removeItem } from './../actions/items';
 import { createUserReducer, removeUserReducer } from './users';
@@ -12,7 +13,7 @@ let reducers = {
   [removeItem]: removeItemReducer
 }
 
-let reducer = (state, action) => {
+let reducer = (state = initState, action) => {
   let reqReducer = reducers[action.type] || fallbackReducer;
   return reqReducer(state, action);
 }
