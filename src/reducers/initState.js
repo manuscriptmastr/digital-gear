@@ -41,6 +41,10 @@ const initState = {
     firstName: 'Jonathan',
     lastName: 'Martin',
     profileImg: 'https://scontent-mia3-1.cdninstagram.com/vp/cc6cdcab79ccda2b6886293f3e24bf87/5B79B26A/t51.2885-19/s320x320/27576378_182862049151427_6510111844441522176_n.jpg'
+  },
+  search: {
+    filters: {},
+    sort: 'title'
   }
 }
 
