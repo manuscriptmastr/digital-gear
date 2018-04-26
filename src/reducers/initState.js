@@ -3,16 +3,19 @@ const initState = {
   products: [
     {
       id: 1,
+      price: 12.99,
       title: 'DC T-shirt',
       body: 'Get this shirt and make all your friends jealous!'
     },
     {
       id: 2,
+      price: 24.99,
       title: 'DC Fanny Pack',
       body: 'Cuz FANNY PACKS ARE BACK!!!'
     },
     {
       id: 3,
+      price: 59.99,
       title: 'Chris Aquino Chia Pet',
       body: "We love our instructors, and we know you do, too. Pour ethically-sourced coffee on Chris' head and watch his mohawk grow!"
     }
