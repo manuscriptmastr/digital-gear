@@ -1,10 +1,12 @@
 export let queryBy = (str, arr) => {
+  let cleanedStr = str.toLowerCase();
 
   let query = (a) => {
     let filteredArr = a.filter(el => {
       let values = Object.values(el);
-      let filteredValues = values.filter(v => typeof(v) === 'string');
-      return filteredValues.some(v => v.includes(str));
+      let stringValues = values.filter(v => typeof(v) === 'string');
+      let cleanedValues = stringValues.map(v => v.toLowerCase());
+      return cleanedValues.some(v => v.includes(cleanedStr));
     });
     return filteredArr;
   }
