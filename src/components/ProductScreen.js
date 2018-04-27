@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './Layout';
 import Searchbar from './Searchbar';
 import ProductList from './ProductList';
-import { pipe, sortBy } from './../lib/utils';
+import { pipe, queryBy, sortBy } from './../lib/utils';
 import { connect } from 'react-redux';
 
 let ProductScreen = ({ products }) =>
@@ -11,7 +11,7 @@ let ProductScreen = ({ products }) =>
     <ProductList products={products}/>
   </Layout>
 
-let mapStateToProps = ({ products, search: { filters, sort } }) =>
-({ products: pipe(sortBy(sort))(products) });
+let mapStateToProps = ({ products, search: { query, filters, sort } }) =>
+({ products: pipe(queryBy(query), sortBy(sort))(products) });
 
 export default connect(mapStateToProps)(ProductScreen);

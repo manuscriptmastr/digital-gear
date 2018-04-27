@@ -1,3 +1,16 @@
+export let queryBy = (str, arr) => {
+
+  let query = (a) => {
+    let filteredArr = a.filter(el => {
+      let values = Object.values(el);
+      let filteredValues = values.filter(v => typeof(v) === 'string');
+      return filteredValues.some(v => v.includes(str));
+    });
+    return filteredArr;
+  }
+  return arr ? query(arr) : (a) => query(a);
+}
+
 export let filterBy = (params, arr) => {
 
   let filter = (a) => {
