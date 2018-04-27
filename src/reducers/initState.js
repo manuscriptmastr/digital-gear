@@ -53,7 +53,7 @@ const initState = {
     filters: {
       categoryId: ''
     },
-    sort: 'title'
+    sort: ''
   }
 }
 

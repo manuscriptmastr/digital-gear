@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 let Sort = ({ sort, updateSort }) =>
   <select value={sort} onChange={(e) => updateSort(e.target.value)}>
+    <option value="">Sort</option>
     <option value="title">Title</option>
     <option value="price">Price</option>
   </select>
