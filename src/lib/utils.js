@@ -18,7 +18,7 @@ export let filterBy = (params, arr) => {
   let filter = (a) => {
     let paramEntries = Object.entries(params);
     let filteredArr = a.filter(el =>
-      paramEntries.every(([k, v]) => el[k] === v)
+      paramEntries.every(([k, v]) => v ? el[k] === v : true)
     );
     return filteredArr;
   }
