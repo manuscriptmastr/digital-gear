@@ -2,11 +2,15 @@ import initState from './initState';
 
 import { createUser, removeUser } from './../actions/users';
 import { addItem, removeItem } from './../actions/items';
-import { updateQuery, updateFilters, updateSort } from './../actions/search';
+import { updateProducts } from './../actions/products';
+import { updateCategories } from './../actions/categories';
+import { updateCategory, updateQuery, updateSort } from './../actions/search';
 
 import { createUserReducer, removeUserReducer } from './users';
 import { addItemReducer, removeItemReducer } from './items';
-import { updateQueryReducer, updateFiltersReducer, updateSortReducer } from './../reducers/search';
+import { updateProductsReducer } from './products';
+import { updateCategoriesReducer } from './categories';
+import { updateCategoryReducer, updateQueryReducer, updateSortReducer } from './../reducers/search';
 
 let fallbackReducer = (state, action) => state;
 
@@ -15,8 +19,10 @@ let reducers = {
   [removeUser]: removeUserReducer,
   [addItem]: addItemReducer,
   [removeItem]: removeItemReducer,
+  [updateProducts]: updateProductsReducer,
+  [updateCategories]: updateCategoriesReducer,
+  [updateCategory]: updateCategoryReducer,
   [updateQuery]: updateQueryReducer,
-  [updateFilters]: updateFiltersReducer,
   [updateSort]: updateSortReducer
 }
 

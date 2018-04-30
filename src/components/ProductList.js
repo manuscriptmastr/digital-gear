@@ -4,8 +4,8 @@ import Product from './Product';
 let ProductList = ({ products }) =>
   <ul className="product-list">
     {
-      products.map(p =>
-        <Product product={p} />
+      products.map((p, key) =>
+        <Product key={key} product={p} />
       )
     }
   </ul>

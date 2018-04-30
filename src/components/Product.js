@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-let Product = ({ product: { id, price, title } }) =>
+let Product = ({ product: { _id, price, title } }) =>
   <li className="product">
-    <Link to={`/products/${id}`}>
+    <Link to={`/products/${_id}`}>
       <h1>{title} - ${price}</h1>
     </Link>
   </li>

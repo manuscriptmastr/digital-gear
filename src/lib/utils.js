@@ -1,3 +1,14 @@
+export let fromCategory = (id, arr) => {
+  
+  let category = (a) => {
+    let filteredArr = a.filter(el =>
+      id && el.category ? el.category._id === id : true
+    );
+    return filteredArr;
+  }
+  return arr ? category(arr) : (a) => category(a);
+}
+
 export let queryBy = (str, arr) => {
   let cleanedStr = str.toLowerCase();
 
@@ -11,18 +22,6 @@ export let queryBy = (str, arr) => {
     return filteredArr;
   }
   return arr ? query(arr) : (a) => query(a);
-}
-
-export let filterBy = (params, arr) => {
-
-  let filter = (a) => {
-    let paramEntries = Object.entries(params);
-    let filteredArr = a.filter(el =>
-      paramEntries.every(([k, v]) => v ? el[k] === v : true)
-    );
-    return filteredArr;
-  }
-  return arr ? filter(arr) : (a) => filter(a);
 }
 
 export let sortBy = (key, arr) => {

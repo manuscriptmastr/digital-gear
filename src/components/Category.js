@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-let Category = ({ category: { id, title } }) =>
+let Category = ({ category: { _id, title } }) =>
   <li>
-    <Link to={`/categories/${id}`} title={title}>
+    <Link to={`/categories/${_id}`} title={title}>
       {title}
     </Link>
   </li>

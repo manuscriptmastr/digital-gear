@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Layout from './Layout';
 import Searchbar from './search/index';
 import Query from './search/Query';
 import Sort from './search/Sort';
 import CategoryFilter from './search/CategoryFilter';
 import ProductList from './ProductList';
-import { pipe, queryBy, filterBy, sortBy } from './../lib/utils';
+import { pipe, fromCategory, queryBy, sortBy } from './../lib/utils';
+import { updateProducts } from './../actions/products';
+import { fetchProducts } from './../api/products';
 import { connect } from 'react-redux';
 
 let ProductScreen = ({ products }) =>
@@ -18,12 +20,32 @@ let ProductScreen = ({ products }) =>
     <ProductList products={products}/>
   </Layout>
 
-let mapStateToProps = ({ products, search }) => {
-  let { query, filters, sort } = search;
+let mapStateToProps = ({ products, search, jwt }) => {
+  let { category, query, sort } = search;
   return ({
-    products: pipe(queryBy(query), filterBy(filters), sortBy(sort))(products),
-    search
+    products: pipe(fromCategory(category), queryBy(query), sortBy(sort))(products),
+    search,
+    jwt
   });
 }
 
-export default connect(mapStateToProps)(ProductScreen);
+let mapDispatchToProps = (dispatch) => ({ dispatch });
+
+class Api extends Component {
+  componentDidMount() {
+    this.update();
+  }
+
+  async update() {
+    let { jwt } = this.props;
+    let products = await fetchProducts(jwt);
+    this.props.dispatch(updateProducts(products));
+  }
+
+  render() {
+    let { products } = this.props;
+    return <ProductScreen products={products} />
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Api);
