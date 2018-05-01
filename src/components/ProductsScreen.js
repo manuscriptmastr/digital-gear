@@ -11,7 +11,7 @@ import { fetchProducts } from './../api/products';
 import { connect } from 'react-redux';
 import { compose, withHandlers, lifecycle } from 'recompose';
 
-let ProductScreen = ({ products }) =>
+let ProductsScreen = ({ products }) =>
   <Layout>
     <Searchbar>
       <Query />
@@ -49,4 +49,4 @@ let enhance = compose(
   })
 );
 
-export default enhance(ProductScreen);
+export default enhance(ProductsScreen);
