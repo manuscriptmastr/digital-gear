@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Layout from './Layout';
 import Searchbar from './search/index';
 import Query from './search/Query';
@@ -9,6 +9,7 @@ import { pipe, fromCategory, queryBy, sortBy } from './../lib/utils';
 import { updateProducts } from './../actions/products';
 import { fetchProducts } from './../api/products';
 import { connect } from 'react-redux';
+import { compose, lifecycle } from 'recompose';
 
 let ProductScreen = ({ products }) =>
   <Layout>
@@ -31,21 +32,15 @@ let mapStateToProps = ({ products, search, jwt }) => {
 
 let mapDispatchToProps = (dispatch) => ({ dispatch });
 
-class Api extends Component {
-  componentDidMount() {
-    this.update();
-  }
+let enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  lifecycle({
+    async componentDidMount() {
+      let { jwt } = this.props;
+      let products = await fetchProducts(jwt);
+      this.props.dispatch(updateProducts(products));
+    },
+  })
+);
 
-  async update() {
-    let { jwt } = this.props;
-    let products = await fetchProducts(jwt);
-    this.props.dispatch(updateProducts(products));
-  }
-
-  render() {
-    let { products } = this.props;
-    return <ProductScreen products={products} />
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Api);
+export default enhance(ProductScreen);
