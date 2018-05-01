@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose, lifecycle } from 'recompose';
 import { updateCategory } from './../../actions/search';
 import { fetchCategories } from './../../api/categories';
 import { updateCategories } from './../../actions/categories';
@@ -22,20 +23,15 @@ let mapDispatchToProps = (dispatch) =>
       dispatch
     });
 
-class Api extends Component {
-  componentDidMount() {
-    this.update();
-  }
+let enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  lifecycle({
+    async componentDidMount() {
+      let { jwt } = this.props;
+      let categories = await fetchCategories(jwt);
+      this.props.dispatch(updateCategories(categories));
+    }
+  })
+);
 
-  async update() {
-    let { jwt } = this.props;
-    let categories = await fetchCategories(jwt);
-    this.props.dispatch(updateCategories(categories));
-  }
-
-  render() {
-    return <CategoryFilter {...this.props} />
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Api);
+export default enhance(CategoryFilter);
