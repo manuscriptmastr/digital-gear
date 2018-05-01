@@ -43,7 +43,7 @@ let enhance = compose(
     }
   }),
   lifecycle({
-    async componentDidMount() {
+    componentDidMount() {
       this.props.updateProducts();
     }
   })
