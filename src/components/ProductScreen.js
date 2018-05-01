@@ -9,7 +9,7 @@ import { pipe, fromCategory, queryBy, sortBy } from './../lib/utils';
 import { updateProducts } from './../actions/products';
 import { fetchProducts } from './../api/products';
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, withHandlers, lifecycle } from 'recompose';
 
 let ProductScreen = ({ products }) =>
   <Layout>
@@ -30,16 +30,22 @@ let mapStateToProps = ({ products, search, jwt }) => {
   });
 }
 
-let mapDispatchToProps = (dispatch) => ({ dispatch });
+let mapDispatchToProps = {
+  updateProducts
+};
 
 let enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
+  withHandlers({
+    updateProducts: ({ jwt, updateProducts }) => async () => {
+      let products = await fetchProducts(jwt);
+      updateProducts(products);
+    }
+  }),
   lifecycle({
     async componentDidMount() {
-      let { jwt } = this.props;
-      let products = await fetchProducts(jwt);
-      this.props.dispatch(updateProducts(products));
-    },
+      this.props.updateProducts();
+    }
   })
 );
 

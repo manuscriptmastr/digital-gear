@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, withHandlers, lifecycle } from 'recompose';
 import { updateCategory } from './../../actions/search';
 import { fetchCategories } from './../../api/categories';
 import { updateCategories } from './../../actions/categories';
@@ -17,19 +17,22 @@ let CategoryFilter = ({ categories, category, updateCategory }) =>
 
 let mapStateToProps = ({ categories, search: { category }, jwt }) => ({ categories, category, jwt });
 
-let mapDispatchToProps = (dispatch) =>
-    ({
-      updateCategory: (_id) => dispatch(updateCategory(_id)),
-      dispatch
-    });
+let mapDispatchToProps = {
+  updateCategory: (_id) => updateCategory(_id),
+  updateCategories
+}
 
 let enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle({
-    async componentDidMount() {
-      let { jwt } = this.props;
+  withHandlers({
+    updateCategories: ({ jwt, updateCategories }) => async () => {
       let categories = await fetchCategories(jwt);
-      this.props.dispatch(updateCategories(categories));
+      updateCategories(categories);
+    }
+  }),
+  lifecycle({
+    componentDidMount() {
+      this.props.updateCategories();
     }
   })
 );

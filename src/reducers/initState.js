@@ -1,45 +1,7 @@
 const initState = {
   items: [],
-  products: [
-    {
-      _id: "1",
-      categoryId: "1",
-      price: 12.99,
-      title: 'DC T-shirt',
-      body: 'Get this shirt and make all your friends jealous!'
-    },
-    {
-      _id: "2",
-      categoryId: "2",
-      price: 24.99,
-      title: 'DC Fanny Pack',
-      body: 'Cuz FANNY PACKS ARE BACK!!!'
-    },
-    {
-      _id: "3",
-      categoryId: "3",
-      price: 59.99,
-      title: 'Chris Aquino Chia Pet',
-      body: "We love our instructors, and we know you do, too. Pour ethically-sourced coffee on Chris' head and watch his mohawk grow!"
-    }
-  ],
-  categories: [
-    {
-      _id: "1",
-      title: 'Crafts',
-      slug: 'crafts'
-    },
-    {
-      _id: "2",
-      title: 'Swag',
-      slug: 'swag'
-    },
-    {
-      _id: "3",
-      title: 'Stationary',
-      slug: 'stationary'
-    }
-  ],
+  products: [],
+  categories: [],
   users: [],
   jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWU3MzRlMmZkZWY1ZjAwMTQ2ZmY3ZmUiLCJpZCI6IjVhZTczNGUyZmRlZjVmMDAxNDZmZjdmZSIsImlhdCI6MTUyNTEwMTc5NCwiZXhwIjoxNTI3NjkzNzk0fQ.sZE21cxdt_9YDvlSaDl2oqKv7qvmvKcf723yUwcMIsg",
   currentUser: {
