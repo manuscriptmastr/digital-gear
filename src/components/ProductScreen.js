@@ -39,22 +39,22 @@ const fallback = {
   ]
 }
 
-let ProductScreen = ({ product }) =>
+let ProductScreen = ({ products, id }) =>
   <Layout>
-    <Product product={product}/>
+    <Product product={products.find(p => p._id === id) || fallback}/>
   </Layout>
 
-let mapStateToProps = ({ jwt, products, match }) =>
+let mapStateToProps = ({ jwt, products }) =>
   ({
     jwt,
     products,
-    product: products[0] || fallback
-    // product: products.find(p => p._id === match.params.id) || fallback
   });
 
-let mapDispatchToProps = {
-  updateProducts
-}
+let mapDispatchToProps = (dispatch, props) =>
+  ({
+    updateProducts: (products) => dispatch(updateProducts(products)),
+    id: props.match.params.id
+  });
 
 let enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
