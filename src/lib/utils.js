@@ -1,3 +1,8 @@
+export let log = (thing) => {
+  console.log(thing);
+  return thing;
+}
+
 export let fromCategory = (id, arr) => {
   
   let category = (a) => {

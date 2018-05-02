@@ -39,11 +39,6 @@ const fallback = {
   ]
 }
 
-let log = (thing) => {
-  console.log(thing);
-  return thing;
-}
-
 let ProductScreen = ({ product }) =>
   <Layout>
     <Product product={product}/>
