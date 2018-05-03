@@ -12,14 +12,16 @@ import { fromCategory, pipe } from './../lib/utils';
 
 let CategoryScreen = ({ products, categories }) =>
   <Layout>
-    {
-      categories.map(c =>
-        <div>
-          <Category category={c}/>
-          <ProductList products={pipe(fromCategory(c._id))(products)} />
-        </div>
-      )
-    }
+    <ul className="categorized-products-list">
+      {
+        categories.map((c, key) =>
+          <li key={key} className="categorized-products">
+            <Category category={c} />
+            <ProductList products={pipe(fromCategory(c._id))(products)} />
+          </li>
+        )
+      }
+    </ul>
   </Layout>
 
 let mapStateToProps = ({ products, categories, jwt }) => ({ products, categories, jwt });
