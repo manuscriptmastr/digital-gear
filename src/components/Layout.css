@@ -1,0 +1,25 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+img, svg {
+  max-width: 100%;
+}
+
+html, body, .layout {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.layout {
+  background-color: pink;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar dashboard";
+}
