@@ -1,11 +1,14 @@
 import React from 'react';
 import Product from './Product';
+import './ProductList.css';
 
 let ProductList = ({ products }) =>
   <ul className="product-list">
     {
       products.map((p, key) =>
-        <Product key={key} product={p} />
+        <li className="product-item">
+          <Product key={key} product={p} />
+        </li>
       )
     }
   </ul>
