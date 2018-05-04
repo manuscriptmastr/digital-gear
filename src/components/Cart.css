@@ -1,0 +1,12 @@
+.cart {
+  display: block;
+  position: relative;
+  width: 30px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cart-icon {
+  display: block;
+  width: 100%;
+}

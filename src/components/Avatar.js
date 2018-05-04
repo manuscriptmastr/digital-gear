@@ -1,13 +1,13 @@
 import React from 'react';
+import './Avatar.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 let defaultImg = '/assets/icon-user.svg';
 
 let Avatar = ({ currentUser: { profileImg = defaultImg, username } }) =>
-  <Link to="/profile">
-    <h1>Welcome, {username}!</h1>
-    <img src={profileImg} className="avatar" alt="avatar" />
+  <Link className="avatar" to={`/users/${username}`}>
+    <img src={profileImg} className="avatar-image" alt="avatar" />
   </Link>
 
 let mapStateToProps = ({ currentUser }) => ({ currentUser });

@@ -1,3 +1,6 @@
 .dashboard {
   grid-area: dashboard;
+  padding: 2em;
+  overflow-y: scroll;
+  background-color: white;
 }

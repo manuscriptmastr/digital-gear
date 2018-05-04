@@ -1,0 +1,11 @@
+.logo {
+  grid-area: logo;
+  display: block;
+  padding: 1em;
+  color: white;
+  background-color: var(--dkgray);
+}
+
+.logo-icon {
+  width: 100%;
+}
