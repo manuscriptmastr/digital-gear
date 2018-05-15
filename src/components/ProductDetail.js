@@ -1,5 +1,5 @@
 import React from 'react';
-import { addItem } from './../actions/items';
+import { addItem, removeItem } from './../actions/items';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
@@ -11,17 +11,20 @@ let ProductDetail = ({
     description,
     images: [ img ]
   },
-  addItem
+  addItem,
+  removeItem
 }) =>
   <div className="product-detail">
     <img className="product-detail-image" src={img.url} alt={img.title} />
     <h1 className="product-detail-title">{title} - ${price}</h1>
     <p className="product-detail-description">{description}</p>
     <button className="product-detail-action" onClick={() => addItem(_id)} >Add to cart</button>
+    <button className="product-detail-action" onClick={() => removeItem(_id)} >Remove from cart</button>
   </div>
 
 let mapDispatchToProps = {
-  addItem
+  addItem,
+  removeItem
 }
 
 let enhance = compose(
