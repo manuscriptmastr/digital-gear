@@ -2,6 +2,7 @@
   display: block;
   width: 80px;
   height: 80px;
+  color: var(--color-text);
 }
 
 .avatar-image {
@@ -11,4 +12,5 @@
   object-fit: cover;
   object-position: center;
   border-radius: 9999px;
+  background-color: var(--white);
 }
