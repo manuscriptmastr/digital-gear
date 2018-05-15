@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers, lifecycle } from 'recompose';
 import Layout from './Layout';
-import Product from './Product';
+import ProductDetail from './ProductDetail';
 import { updateProducts } from './../actions/products';
 import { fetchProducts } from '../api/products';
 
@@ -41,7 +41,7 @@ const fallback = {
 
 let ProductScreen = ({ product }) =>
   <Layout>
-    <Product product={product}/>
+    <ProductDetail product={product}/>
   </Layout>
 
 let mapStateToProps = ({ jwt, products }, { match }) =>
