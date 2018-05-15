@@ -6,8 +6,8 @@ let ProductList = ({ products }) =>
   <ul className="product-list">
     {
       products.map((p, key) =>
-        <li className="product-item">
-          <Product key={key} product={p} />
+        <li key={key} className="product-item">
+          <Product product={p} />
         </li>
       )
     }
